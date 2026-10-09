@@ -1,0 +1,99 @@
+[
+  {
+    "name": "@babel/runtime",
+    "version": "7.29.10",
+    "license": "MIT",
+    "files": [
+      "ThirdPartyLicenses/_babel_runtime_7.29.10-LICENSE"
+    ]
+  },
+  {
+    "name": "complex.js",
+    "version": "2.4.3",
+    "license": "MIT",
+    "files": [
+      "ThirdPartyLicenses/complex.js_2.4.3-LICENSE"
+    ]
+  },
+  {
+    "name": "decimal.js",
+    "version": "10.6.0",
+    "license": "MIT",
+    "files": [
+      "ThirdPartyLicenses/decimal.js_10.6.0-LICENCE.md"
+    ]
+  },
+  {
+    "name": "escape-latex",
+    "version": "1.2.0",
+    "license": "MIT",
+    "files": [
+      "ThirdPartyLicenses/escape-latex_1.2.0-LICENSE.md"
+    ]
+  },
+  {
+    "name": "fraction.js",
+    "version": "5.3.4",
+    "license": "MIT",
+    "files": [
+      "ThirdPartyLicenses/fraction.js_5.3.4-LICENSE"
+    ]
+  },
+  {
+    "name": "javascript-natural-sort",
+    "version": "0.7.1",
+    "license": "MIT",
+    "files": [
+      "ThirdPartyLicenses/javascript-natural-sort_0.7.1-LICENSE.txt"
+    ]
+  },
+  {
+    "name": "mathjs",
+    "version": "15.1.1",
+    "license": "Apache-2.0",
+    "files": [
+      "ThirdPartyLicenses/mathjs_15.1.1-LICENSE",
+      "ThirdPartyLicenses/mathjs_15.1.1-NOTICE"
+    ]
+  },
+  {
+    "name": "mathlive",
+    "version": "0.109.2",
+    "license": "MIT",
+    "files": [
+      "ThirdPartyLicenses/mathlive_0.109.2-LICENSE.txt"
+    ]
+  },
+  {
+    "name": "seedrandom",
+    "version": "3.0.5",
+    "license": "MIT",
+    "files": [
+      "ThirdPartyLicenses/seedrandom_3.0.5-LICENSES.txt"
+    ]
+  },
+  {
+    "name": "tiny-emitter",
+    "version": "2.1.0",
+    "license": "MIT",
+    "files": [
+      "ThirdPartyLicenses/tiny-emitter_2.1.0-LICENSE"
+    ]
+  },
+  {
+    "name": "typed-function",
+    "version": "4.2.2",
+    "license": "MIT",
+    "files": [
+      "ThirdPartyLicenses/typed-function_4.2.2-LICENSE"
+    ]
+  },
+  {
+    "name": "KaTeX and KaTeX fonts (used by MathLive)",
+    "license": "MIT",
+    "files": [
+      "ThirdPartyLicenses/KaTeX-LICENSE.txt",
+      "ThirdPartyLicenses/KaTeX-fonts-LICENSE.txt"
+    ]
+  }
+]

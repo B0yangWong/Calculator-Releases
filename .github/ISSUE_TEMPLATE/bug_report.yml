@@ -1,0 +1,70 @@
+name: 问题反馈 / Bug report
+description: 报告计算、输入或应用运行问题 / Report a calculation, input, or app issue
+title: "[Bug] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        反馈内容会公开。请删除私人算式、个人信息和敏感截图。不要把整个历史文件上传。
+        Reports are public. Remove private expressions, personal details, and sensitive screenshots. Do not upload your full history file.
+  - type: input
+    id: version
+    attributes:
+      label: 应用版本 / App version
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: 系统与芯片 / macOS and chip
+      placeholder: "macOS 27, Apple M4"
+    validations:
+      required: true
+  - type: dropdown
+    id: angle
+    attributes:
+      label: 角度模式 / Angle mode
+      options:
+        - 角度 / Degrees
+        - 弧度 / Radians
+        - 与此问题无关 / Not applicable
+    validations:
+      required: true
+  - type: dropdown
+    id: complex
+    attributes:
+      label: 复数模式 / Complex mode
+      options:
+        - 关闭 / Off
+        - 开启 / On
+        - 与此问题无关 / Not applicable
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤与算式 / Steps and expression
+      description: 写出从打开应用到出现问题的步骤，并注明键盘输入、屏幕按键或粘贴。 / Include steps and whether you typed, used the keypad, or pasted.
+      placeholder: "输入 / Type: 2^3"
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际结果 / Actual result
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望结果 / Expected result
+      description: 如涉及计算，请说明核对依据。 / For calculation issues, explain how you checked the expected result.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: 补充信息 / Additional context
+      description: 可以添加经过隐私处理的截图；不要提交密码、个人资料或完整历史。 / Redacted screenshots are welcome; do not submit passwords, personal data, or full history.

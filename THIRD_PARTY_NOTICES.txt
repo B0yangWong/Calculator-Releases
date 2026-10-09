@@ -1,0 +1,44 @@
+Calculator — Third-party notices
+
+The application includes the following third-party components. Their complete
+licenses and required notices are included in the ThirdPartyLicenses directory.
+
+@babel/runtime 7.29.10 — MIT
+  ThirdPartyLicenses/_babel_runtime_7.29.10-LICENSE
+
+complex.js 2.4.3 — MIT
+  ThirdPartyLicenses/complex.js_2.4.3-LICENSE
+
+decimal.js 10.6.0 — MIT
+  ThirdPartyLicenses/decimal.js_10.6.0-LICENCE.md
+
+escape-latex 1.2.0 — MIT
+  ThirdPartyLicenses/escape-latex_1.2.0-LICENSE.md
+
+fraction.js 5.3.4 — MIT
+  ThirdPartyLicenses/fraction.js_5.3.4-LICENSE
+
+javascript-natural-sort 0.7.1 — MIT
+  ThirdPartyLicenses/javascript-natural-sort_0.7.1-LICENSE.txt
+
+mathjs 15.1.1 — Apache-2.0
+  ThirdPartyLicenses/mathjs_15.1.1-LICENSE
+  ThirdPartyLicenses/mathjs_15.1.1-NOTICE
+
+mathlive 0.109.2 — MIT
+  ThirdPartyLicenses/mathlive_0.109.2-LICENSE.txt
+
+seedrandom 3.0.5 — MIT
+  ThirdPartyLicenses/seedrandom_3.0.5-LICENSES.txt
+
+tiny-emitter 2.1.0 — MIT
+  ThirdPartyLicenses/tiny-emitter_2.1.0-LICENSE
+
+typed-function 4.2.2 — MIT
+  ThirdPartyLicenses/typed-function_4.2.2-LICENSE
+
+KaTeX and KaTeX fonts (used by MathLive) — MIT
+  ThirdPartyLicenses/KaTeX-LICENSE.txt
+  ThirdPartyLicenses/KaTeX-fonts-LICENSE.txt
+
+Supplemental upstream sources: ThirdPartyLicenses/SOURCES.md

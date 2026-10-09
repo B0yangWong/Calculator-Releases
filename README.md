@@ -1,2 +1,64 @@
-# Calculator-Releases
-Calculator for macOS: offline scientific calculator with editable formulas, Chinese and English. Downloads and documentation only; application source is private.
+# Calculator
+
+[English](README.en.md)
+
+为 Apple Silicon Mac 制作的离线科学计算器。公式可以直接编辑，支持上标、上下分数、科学计数法、中英文界面和本机计算历史。
+
+本仓库只公开下载包、使用说明和问题反馈，不公开应用源码。它不是 Desmos 官方产品，也没有嵌入 Desmos 网站或专有代码。
+
+![Calculator 中文界面](docs/screenshots/calculator-zh.png)
+
+## 下载与安装
+
+- [下载最新版本](https://github.com/B0yangWong/Calculator-Releases/releases/latest)
+- [下载 v1.0.0：Calculator-1.0.0-macOS-arm64.zip](https://github.com/B0yangWong/Calculator-Releases/releases/download/v1.0.0/Calculator-1.0.0-macOS-arm64.zip)
+- [查看 v1.0.0 发布说明与校验文件](https://github.com/B0yangWong/Calculator-Releases/releases/tag/v1.0.0)
+
+需要 Apple Silicon 芯片和 macOS 14 或更高版本。此版本在 macOS 27 上实际验证过，未在 macOS 14 实机验证；不提供 Intel 版本。
+
+下载并解压 ZIP，把 `Calculator.app` 拖入“应用程序”后打开。无需登录、联网或另装运行环境。GitHub 自动提供的 `Source code (zip)` 和 `Source code (tar.gz)` 仅包含本仓库的发布文档，不包含应用源码，也不是安装包；请下载上面带版本号的应用 ZIP。
+
+此版本采用本机临时签名，没有 Apple Developer ID 签名，也未经过 Apple 公证。首次打开可能被 macOS 拦截。仅在确认来自本仓库、文件未被篡改且愿意承担风险时，先尝试打开，再进入“系统设置 → 隐私与安全性”，使用“仍要打开”并确认。选项可能因系统版本或设备管理策略而不可用。参见 [Apple 官方说明](https://support.apple.com/en-us/102445)。如果系统提示文件会损害电脑或文件已损坏，请停止打开并反馈，不要关闭系统安全保护。
+
+## 直接输入公式
+
+| 输入 | 含义 |
+| --- | --- |
+| `2^3` | 输入可编辑上标，结果为 8 |
+| `(2+3)/2` | 输入可编辑上下分数，结果为 2.5 |
+| `e-25` | 10 的 −25 次方 |
+| `1.6e-25` | 1.6 × 10 的 −25 次方 |
+| `10*e*3` | e 表示自然常数，结果约为 81.5484548537714 |
+| `(e)-25` | 自然常数 e 减去 25 |
+
+上标或分母输入完后按右箭头回到原式；上标也可按空格退出。科学计数法指数后的加减乘除会自动回到原式。按 Enter 保存当前行。浅灰色结果是输入中的预览，保存后的结果颜色更深。
+
+默认使用角度制。计算三角函数前请检查“角度 / 弧度”。在“设置 → 语言”中选择“中文”或“English”，立即切换并记住选择。
+
+## 功能
+
+- 四则运算、乘方、根式、绝对值、百分数、阶乘、π、e、ans。
+- 三角、反三角、双曲、反双曲、自然对数、常用对数及指定底数对数。
+- 组合、排列、取整、最大公约数、最小公倍数、余数等函数。
+- 变量，例如 `a=5`；单参数自定义函数，例如 `f(x)=x^2+1`。
+- 列表、逐元素运算及平均数、中位数、总和、标准差、方差等统计函数。
+- 可选复数模式和常用矩阵运算。
+- 可编辑计算历史、后续结果重算、撤销、重做、复制、粘贴和历史导出。“清除全部”会同时清除计算历史和未提交输入，当前会话中可以撤销。
+- 本机自动保存、浅色 / 深色主题、字号调整、中英文界面及应用菜单。
+
+## 当前边界
+
+- 一般计算使用浮点数，显示 15 位有效数字，不是任意精度计算器。纯数字有理数算式支持精确分数路径；分数 / 小数结果切换也仅适用于这类算式。
+- 百分号表示除以 100，不采用部分商用计算器的上下文百分比规则。
+- 最多保存 250 行计算历史；列表最多 1024 项；阶乘最大为 170；矩阵最大为 32 × 32。
+- 列表范围写法、列表索引、多参数自定义函数及递归函数未实现。
+- 尚不支持函数绘图、求导和积分，也不保证与 Desmos 的所有行为一致。
+- 自动测试不能覆盖所有输入。重要计算请另行核对，尤其要检查单位、角度模式和数值精度。
+
+## 隐私、更新与反馈
+
+计算不依赖网络。应用没有账号、遥测上传或云同步。历史和设置保存在本机，记录并未由应用加密；详见 [隐私说明](PRIVACY.md)。更新需自行下载新版本。
+
+发现问题请使用 [问题反馈](https://github.com/B0yangWong/Calculator-Releases/issues/new/choose)，提供可复现算式、实际结果、期望结果、角度模式、版本和系统信息。提交前请删除截图或记录中的私人信息。功能建议也可以在 [Issues](https://github.com/B0yangWong/Calculator-Releases/issues) 提出。
+
+版本变化见 [更新记录](CHANGELOG.md)。第三方组件的许可证和说明随下载包附带；本仓库不提供 Calculator 应用源码的开源许可。
