@@ -13,7 +13,7 @@
 - 修复长公式保存后重新打开时的恢复问题。
 - 普通运行采用单实例保护，避免多个窗口进程同时写入同一份历史。
 
-本版仅有 arm64 下载包；未经过 Apple Developer ID 签名或公证。一般计算为浮点数、显示 15 位有效数字。绘图、求导和积分尚未实现。具体限制见 [使用说明](README.md#当前边界)。
+本版仅有 arm64 下载包；未经过 Apple Developer ID 签名或公证。一般计算为浮点数、显示 15 位有效数字。绘图、求导和积分尚未实现。具体限制见 [使用说明](README.zh-CN.md#隐私与当前限制)。
 
 ### English
 
@@ -28,4 +28,4 @@ First public download release. Only app downloads and documentation are publishe
 - Fixes restoration of saved long expressions after relaunch.
 - Single-instance protection during normal operation prevents separate app processes from writing to the same history simultaneously.
 
-This release is arm64 only and is not Developer ID signed or Apple notarized. General calculations use floating point and display 15 significant digits. Graphing, derivatives, and integration are not implemented. See [limitations](README.en.md#limits).
+This release is arm64 only and is not Developer ID signed or Apple notarized. General calculations use floating point and display 15 significant digits. Graphing, derivatives, and integration are not implemented. See [limitations](README.md#privacy-and-limits).

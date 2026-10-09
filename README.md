@@ -1,64 +1,109 @@
-# Calculator
+<h1 align="center">Calculator</h1>
 
-[English](README.en.md)
+<p align="center"><img src="docs/app-icon.png" width="96" alt="Calculator black-hole app icon"></p>
 
-为 Apple Silicon Mac 制作的离线科学计算器。公式可以直接编辑，支持上标、上下分数、科学计数法、中英文界面和本机计算历史。
+<p align="center"><strong>A native macOS scientific calculator that keeps your original expression editable.</strong></p>
 
-本仓库只公开下载包、使用说明和问题反馈，不公开应用源码。它不是 Desmos 官方产品，也没有嵌入 Desmos 网站或专有代码。
+<p align="center">Powers, fractions, and scientific notation, without leaving the expression you started.</p>
 
-![Calculator 中文界面](docs/screenshots/calculator-zh.png)
+<p align="center">
+  <a href="https://github.com/B0yangWong/Calculator-Releases/releases/latest">Download</a> |
+  <a href="#features">Features</a> |
+  <a href="PRIVACY.md">Privacy</a> |
+  <a href="README.zh-CN.md">中文说明</a>
+</p>
 
-## 下载与安装
+---
 
-- [下载最新版本](https://github.com/B0yangWong/Calculator-Releases/releases/latest)
-- [下载 v1.0.0：Calculator-1.0.0-macOS-arm64.zip](https://github.com/B0yangWong/Calculator-Releases/releases/download/v1.0.0/Calculator-1.0.0-macOS-arm64.zip)
-- [查看 v1.0.0 发布说明与校验文件](https://github.com/B0yangWong/Calculator-Releases/releases/tag/v1.0.0)
+Type `^` to build a power, `/` to build a stacked fraction, or `1.6e-25` for scientific notation. Keep working in the same expression, see a live result, and press Enter to save it. Earlier rows remain editable, so changing a variable or calculation updates the results that follow.
 
-需要 Apple Silicon 芯片和 macOS 14 或更高版本。此版本在 macOS 27 上实际验证过，未在 macOS 14 实机验证；不提供 Intel 版本。
+This repository contains downloads, documentation, and demo images. Application source is not published here. Calculator is an independent app, not a Desmos product, and does not embed its website or proprietary code.
 
-下载并解压 ZIP，把 `Calculator.app` 拖入“应用程序”后打开。无需登录、联网或另装运行环境。GitHub 自动提供的 `Source code (zip)` 和 `Source code (tar.gz)` 仅包含本仓库的发布文档，不包含应用源码，也不是安装包；请下载上面带版本号的应用 ZIP。
+**v1.0.0:** Apple Silicon Macs, macOS 14 or later. Tested on macOS 27, not on a physical macOS 14 device. No Intel build. The app is ad-hoc signed, without Developer ID signing or Apple notarization; macOS may block the first launch. See [Install and Open](#install-and-open) before proceeding.
 
-此版本采用本机临时签名，没有 Apple Developer ID 签名，也未经过 Apple 公证。首次打开可能被 macOS 拦截。仅在确认来自本仓库、文件未被篡改且愿意承担风险时，先尝试打开，再进入“系统设置 → 隐私与安全性”，使用“仍要打开”并确认。选项可能因系统版本或设备管理策略而不可用。参见 [Apple 官方说明](https://support.apple.com/en-us/102445)。如果系统提示文件会损害电脑或文件已损坏，请停止打开并反馈，不要关闭系统安全保护。
+## Features
 
-## 直接输入公式
-
-| 输入 | 含义 |
+| Feature | What you can do |
 | --- | --- |
-| `2^3` | 输入可编辑上标，结果为 8 |
-| `(2+3)/2` | 输入可编辑上下分数，结果为 2.5 |
-| `e-25` | 10 的 −25 次方 |
-| `1.6e-25` | 1.6 × 10 的 −25 次方 |
-| `10*e*3` | e 表示自然常数，结果约为 81.5484548537714 |
-| `(e)-25` | 自然常数 e 减去 25 |
+| Editable mathematical input | Type powers, roots, and fractions directly; return from an exponent or denominator to continue the original expression. |
+| Scientific notation and natural e | Use `e-25` for 10⁻²⁵, `1.6e-25` for 1.6 × 10⁻²⁵, and `10*e*3` for Euler's constant. |
+| Scientific functions | Arithmetic, absolute values, percentages, factorials, π, ans, trigonometric and hyperbolic functions and their inverses, logarithms, combinations, permutations, rounding, gcd, lcm, and modulo. |
+| Variables and functions | Define `a=5` or a single-parameter function such as `f(x)=x^2+1`, then reuse it in later rows. |
+| Lists and statistics | Use element-wise operations, mean, median, sum, standard deviation, variance, and related functions. |
+| Complex numbers and matrices | Enable complex-number mode when needed and use common matrix operations. |
+| A reusable worksheet | Edit earlier rows, recalculate dependent results, undo and redo, copy and paste, or export history. |
+| English and Chinese | Change interface and menu language, theme, and text size in Settings. Preferences and unfinished input survive a normal relaunch. |
+| Offline operation | No account, telemetry upload, cloud sync, or automatic update check. |
 
-上标或分母输入完后按右箭头回到原式；上标也可按空格退出。科学计数法指数后的加减乘除会自动回到原式。按 Enter 保存当前行。浅灰色结果是输入中的预览，保存后的结果颜色更深。
+## Preview
 
-默认使用角度制。计算三角函数前请检查“角度 / 弧度”。在“设置 → 语言”中选择“中文”或“English”，立即切换并记住选择。
+These screenshots show the actual app with isolated example calculations, not personal history.
 
-## 功能
+<p align="center"><img src="docs/screenshots/calculator-en.png" width="1080" alt="Calculator with editable fractions, scientific notation, and a live result preview"></p>
 
-- 四则运算、乘方、根式、绝对值、百分数、阶乘、π、e、ans。
-- 三角、反三角、双曲、反双曲、自然对数、常用对数及指定底数对数。
-- 组合、排列、取整、最大公约数、最小公倍数、余数等函数。
-- 变量，例如 `a=5`；单参数自定义函数，例如 `f(x)=x^2+1`。
-- 列表、逐元素运算及平均数、中位数、总和、标准差、方差等统计函数。
-- 可选复数模式和常用矩阵运算。
-- 可编辑计算历史、后续结果重算、撤销、重做、复制、粘贴和历史导出。“清除全部”会同时清除计算历史和未提交输入，当前会话中可以撤销。
-- 本机自动保存、浅色 / 深色主题、字号调整、中英文界面及应用菜单。
+<details>
+<summary>Chinese interface</summary>
 
-## 当前边界
+<p align="center"><img src="docs/screenshots/calculator-zh.png" width="1080" alt="Calculator in Simplified Chinese"></p>
 
-- 一般计算使用浮点数，显示 15 位有效数字，不是任意精度计算器。纯数字有理数算式支持精确分数路径；分数 / 小数结果切换也仅适用于这类算式。
-- 百分号表示除以 100，不采用部分商用计算器的上下文百分比规则。
-- 最多保存 250 行计算历史；列表最多 1024 项；阶乘最大为 170；矩阵最大为 32 × 32。
-- 列表范围写法、列表索引、多参数自定义函数及递归函数未实现。
-- 尚不支持函数绘图、求导和积分，也不保证与 Desmos 的所有行为一致。
-- 自动测试不能覆盖所有输入。重要计算请另行核对，尤其要检查单位、角度模式和数值精度。
+</details>
 
-## 隐私、更新与反馈
+## Type Expressions Directly
 
-计算不依赖网络。应用没有账号、遥测上传或云同步。历史和设置保存在本机，记录并未由应用加密；详见 [隐私说明](PRIVACY.md)。更新需自行下载新版本。
+| Input | Meaning |
+| --- | --- |
+| `2^3` | Editable exponent; result: 8 |
+| `(2+3)/2` | Editable stacked fraction; result: 2.5 |
+| `e-25` | 10 to the power of −25 |
+| `1.6e-25` | 1.6 × 10 to the power of −25 |
+| `10*e*3` | e is Euler's constant; result: approximately 81.5484548537714 |
+| `(e)-25` | Euler's constant minus 25 |
 
-发现问题请使用 [问题反馈](https://github.com/B0yangWong/Calculator-Releases/issues/new/choose)，提供可复现算式、实际结果、期望结果、角度模式、版本和系统信息。提交前请删除截图或记录中的私人信息。功能建议也可以在 [Issues](https://github.com/B0yangWong/Calculator-Releases/issues) 提出。
+A pale result is the live preview before Enter; saved results appear darker. After entering an exponent or denominator, use the right arrow to continue the main expression. Space also exits an exponent. Operators after a scientific-notation exponent return to the main expression automatically.
 
-版本变化见 [更新记录](CHANGELOG.md)。第三方组件的许可证和说明随下载包附带；本仓库不提供 Calculator 应用源码的开源许可。
+The default angle mode is degrees. Check Degrees / Radians before using trigonometric functions. Percent means division by 100, not the context-dependent percentage behavior of some commercial calculators.
+
+## Install and Open
+
+1. Download [Calculator-1.0.0-macOS-arm64.zip](https://github.com/B0yangWong/Calculator-Releases/releases/download/v1.0.0/Calculator-1.0.0-macOS-arm64.zip) from the [v1.0.0 release](https://github.com/B0yangWong/Calculator-Releases/releases/tag/v1.0.0), or find a newer build in [Latest Release](https://github.com/B0yangWong/Calculator-Releases/releases/latest).
+2. Extract the archive and move `Calculator.app` into Applications. Quit an older copy normally before replacing it. No Xcode, account, or additional runtime is required.
+3. Open the app. If macOS blocks it, only proceed if you trust the download and are confident it has not been altered. After the first attempt, use System Settings → Privacy & Security → Open Anyway and confirm, following [Apple's instructions](https://support.apple.com/en-us/102445). This option may not be available on a managed Mac. If macOS says the app is damaged or will harm your computer, stop and report it. Do not disable system security checks.
+4. Open Settings with `Command + ,` to choose 中文 or English, a theme, and text size. Check the angle mode before calculating.
+
+The release includes `SHA256SUMS.txt`. Compare its value with the downloaded ZIP to check for download corruption. A matching checksum does not verify publisher identity, prove the app is safe, or indicate Apple approval.
+
+GitHub's `Source code (zip)` and `Source code (tar.gz)` contain this repository's public documentation, demo images, and notices. They are not app installers and do not contain the Calculator application source.
+
+## Everyday Controls
+
+| Action | Shortcut or interaction |
+| --- | --- |
+| Save the current calculation | `Enter` |
+| Leave an exponent or denominator | Right arrow; Space also exits an exponent |
+| Focus the input row | `Command + N` |
+| Undo / redo | `Command + Z` / `Command + Shift + Z` |
+| Copy / paste | `Command + C` / `Command + V` |
+| Export history | `Command + Shift + E` |
+| Clear history and unfinished input | `Command + Shift + Delete`, or Clear All; can be undone during the current session |
+| Open Settings | `Command + ,` or the settings button |
+| Open the input guide | `Command + /` or the help button |
+
+The app saves history and unfinished input locally. Normal operation uses a single-instance guard to prevent separate app processes from writing to the same history. Force quitting or losing power is not equivalent to a normal quit.
+
+## Privacy and Limits
+
+History and settings stay in `~/Library/Application Support/FormulaDesk/state.json`; the retained directory name does not affect the app's display name. These records are not encrypted by the app. Copy, paste, and export are user-triggered. macOS backups and diagnostic services are separate. See [Privacy](PRIVACY.md) for details, including deletion.
+
+- General calculations use floating-point arithmetic and display 15 significant digits. This is not an arbitrary-precision calculator. Purely numeric rational expressions have an exact-fraction path; fraction / decimal result switching is limited to those expressions.
+- History: up to 250 rows. Lists: up to 1024 items. Factorials: up to 170. Matrices: up to 32 × 32.
+- List ranges, list indexing, multi-parameter custom functions, and recursive functions are not implemented.
+- Graphing, derivatives, and integration are not available yet. Full behavioral parity with Desmos is not promised.
+- Tests cannot cover every expression or every supported Mac. Older supported macOS versions and a clean-Mac first launch still need hands-on validation. Independently check important calculations, including units, angle mode, and precision.
+
+Updates are manual: download a newer version, quit normally, and replace the app without deleting its Application Support folder. See [Changelog](CHANGELOG.md) for version changes.
+
+For [bug reports](https://github.com/B0yangWong/Calculator-Releases/issues/new/choose), include the expression, actual and expected results, angle mode, app version, and macOS version. [Feature requests](https://github.com/B0yangWong/Calculator-Releases/issues) are also welcome. Reports are public; do not upload private history or sensitive screenshots.
+
+## Credits
+
+MathLive provides formula editing; mathjs and its dependencies support evaluation. Third-party notices and licenses accompany the download and are also available in [Third-Party Notices](THIRD_PARTY_NOTICES.txt) and [ThirdPartyLicenses](ThirdPartyLicenses/). This download repository does not grant an open-source license to the Calculator application or icon artwork.
