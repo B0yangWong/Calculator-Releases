@@ -4,6 +4,8 @@ The complete English documentation is now the [main README](README.md).
 
 - [Features](README.md#features)
 - [Expression input](README.md#type-expressions-directly)
+- [Physics equations and units](README.md#physics-equations-and-units)
+- [Physics formula library](README.md#physics-formula-library)
 - [Install and Open](README.md#install-and-open)
 - [Everyday Controls](README.md#everyday-controls)
 - [Privacy and Limits](README.md#privacy-and-limits)
