@@ -1,5 +1,41 @@
 # 更新记录 / Changelog
 
+## v1.1.3
+
+修复显示、点击响应和物理数值边界，下载包为 1.1.3 / build 13。包含此前仅在本机使用的 1.1.1 和 1.1.2 修复；上一个公开版本 v1.1.0 继续保留。仍只公开下载包和文档，不公开应用源码。
+
+- 修复正常计算结果在重复计算、增加输入位数时被误用错误样式的问题；结果与算式同字号，未提交的预览保留浅色。
+- “使用结果”明确插入当前草稿，避免编辑器焦点延迟时插入错误位置或看似没有响应。
+- 修复保存后撤销恢复非空草稿时，重做误走文本编辑路径的问题；覆盖科学 / 物理模式、公式表添加及后续文字编辑。
+- 科学 / 物理模式保留各自已加载的历史编辑器，不再每次切换都重建；键盘保留，并拒绝旧编辑器迟到的焦点事件。首次加载长历史仍有成本。
+- 原生窗口允许后台第一次点击传给按钮；可信后台鼠标事件与原生首击策略分开验证，未把它们当作完整的人手点击与自动激活认证。
+- 构建时把旧版应用备份为 ZIP，而不是在构建目录保留额外的可启动应用。
+- 修复支持范围内的分数阶根反向求解漏负根，以及接近重根时误判解数的问题；不以残差容差合并可区分的根。
+- 输入转为可编辑数学排版时保留原始数字文本，避免粘贴后先丢失小数末位而绕过精度检查；覆盖实际编辑器的输入往返。
+- 输入舍入、极端下溢和多项式系数消去等无法可靠认证的情况明确拒绝，避免把它们报告为零、精确单根或无解。通常显示 15 位有效数字，必要时以最多 17 位区分近根，不等于任意精度。
+
+2026-10-15 的最终构建通过 202 项计算、回归、构建与许可测试，114 项真实 WebKit 检查，24 项原生交互，31 项扩展验收，13 项原生窗口、8 项物理布局、5 项公式表 / 原生剪贴板及 7 项本机保存检查。202 项中包含 50 项独立物理标准算例和 42 项物理边界 / 输入往返回归；128 项物理 / 公式定向测试是其中子集，不额外相加。包完整性、签名完整性、版本与 arm64 架构已核对。
+
+满历史仍有明显停顿。250 行时，到下一次渲染机会的记录为首次物理加载约 1.17 秒、热切换科学约 0.19–0.34 秒、物理约 0.52–0.77 秒；不是人手点击到画面完成的测量，不能承诺瞬时切换。方法见[验证说明](VALIDATION.md)。物理模式不是任意方程或联立方程求解器，量纲一致不证明物理正确，多解需自行选择。测试主机是 arm64、macOS 27.0；macOS 14 只是最低构建目标。未经过 Apple Developer ID 签名或公证，独立全新 Mac 首次安装仍待验证。
+
+### English
+
+Maintenance release 1.1.3 / build 13 fixes display, click response, and physics numerical boundaries. It includes the fixes previously used locally in 1.1.1 and 1.1.2; the previous public v1.1.0 release remains available. Only downloads and documentation are published, not application source.
+
+- Fixes a numeric result incorrectly receiving the error style after recomputation or additional input. Results retain the expression's text size; unsubmitted previews stay pale.
+- Makes Use result explicitly insert into the current draft, avoiding delayed-focus insertion into the wrong editor or an apparently ignored click.
+- Fixes Redo taking the text-edit path after Undo restores a nonempty draft from a committed calculation; covers both modes, formula-library additions, and later text edits.
+- Retains each mode's loaded history editors instead of rebuilding them on every switch, keeps the keyboard in place, and rejects stale editor-focus events. The initial load of a long history still has a cost.
+- Allows the first background click to reach native-window buttons. Trusted background-pointer delivery and the native first-mouse policy were checked separately, not as a complete human click-and-activation certification.
+- Stores build-time app backups as ZIP archives instead of leaving additional launchable app bundles in build folders.
+- Fixes missing negative roots in supported fractional-root inversions and incorrect near-repeated-root classification. Distinguishable roots are not merged using a residual tolerance.
+- Preserves original numeric text through editable-math conversion so a pasted decimal is not shortened before precision checks; regressions include editor input round trips.
+- Rejects unreliable cases involving input rounding, extreme underflow, or lost polynomial coefficients instead of certifying zero, an exact root, or no solution. Results normally display 15 significant digits; up to 17 digits may distinguish nearby roots, not provide arbitrary precision.
+
+The final build passed checks on 2026-10-15: 202 calculation, regression, build, and license tests; 114 real WebKit checks; 24 native interactions; 31 extended acceptance checks; 13 native-window checks; 8 physics-layout checks; 5 formula-library / native-clipboard checks; and 7 local-persistence checks. The 202 tests include 50 independent physics examples and 42 physics-boundary / input-round-trip regressions. The 128-test physics / formula subset is not an additional total. Package integrity, signature integrity, version, and arm64 architecture were checked.
+
+Full histories still pause noticeably. At 250 rows, times to a later frame opportunity were about 1.17 seconds for the first Physics load, 0.19–0.34 seconds for warm Scientific switches, and 0.52–0.77 seconds for warm Physics switches. These are not physical click-to-paint measurements or a promise of instant switching. See [Validation Scope](VALIDATION.md) for methods. Physics solving is not arbitrary or simultaneous equation solving; dimensions do not prove physical validity, and root selection remains the user's responsibility. The test host is arm64 with macOS 27.0; macOS 14 is a minimum build target. The app is not Developer ID signed or Apple notarized. A separate clean-Mac first install remains unverified.
+
 ## v1.1.0
 
 新增物理计算和离线公式表，下载包为 1.1.0 / build 10。仍只公开应用下载和文档，源码不公开。

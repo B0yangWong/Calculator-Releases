@@ -1,6 +1,6 @@
 # 隐私说明 / Privacy
 
-适用版本 / Applies to: Calculator v1.1.0
+适用版本 / Applies to: Calculator v1.1.3
 
 ## 中文
 

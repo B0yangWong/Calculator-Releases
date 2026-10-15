@@ -19,7 +19,17 @@ Type `^` to build a power, `/` to build a stacked fraction, or `1.6e-25` for sci
 
 This repository contains downloads, documentation, and demo images. Application source is not published here. Calculator is an independent app, not a Desmos product, and does not embed its website or proprietary code.
 
-**v1.1.0 / build 10:** Apple Silicon Macs, macOS 14 or later. Tested on macOS 27, not on a physical macOS 14 device. No Intel build. The app is ad-hoc signed, without Developer ID signing or Apple notarization; macOS may block the first launch. See [Install and Open](#install-and-open) before proceeding.
+**v1.1.3 / build 13:** Apple Silicon Macs, with a macOS 14 minimum build target. The test host runs macOS 27.0 on arm64; a physical macOS 14 device and a separate clean-Mac first install have not been checked. No Intel build. The app is ad-hoc signed, without Developer ID signing or Apple notarization; macOS may block the first launch. See [Install and Open](#install-and-open) before proceeding.
+
+## What's Fixed in 1.1.3
+
+- Numeric results keep the expression's text size rather than occasionally becoming small, red error text as you type. Live previews remain pale until saved.
+- **Use result** inserts into the current draft without depending on a delayed editor-focus change. Scientific and Physics retain their own history editors between switches; the keyboard stays in place, and stale editor-focus events are ignored. The first load of a large worksheet still has a cost.
+- Undo / redo correctly restores a committed calculation after Undo brings back a nonempty draft, including across both modes and formula-library additions.
+- The native window allows the first background click to reach buttons. Trusted background-pointer delivery and the native first-mouse policy were checked separately, not as a complete human click-and-activation certification. Build-time backups use ZIP archives rather than extra launchable app copies.
+- Physics solving fixes missing negative roots in supported fractional-root inversions and incorrect near-repeated-root classification. Input conversion preserves original numeric text before precision checks, including pasted decimals. Inputs outside the reliable numerical range are rejected rather than certified as zero, a root, or no solution.
+
+This is a maintenance update, not a new general equation solver. Scientific input, the physics workspace, and the 100-formula library remain available. Full histories still pause noticeably: at 250 rows the tested host took about 1.17 seconds to a later frame opportunity on the first Physics load, and 0.19–0.34 seconds for warm Scientific switches / 0.52–0.77 seconds for warm Physics switches. These are not physical click-to-paint measurements or a speed guarantee. See [Changelog](CHANGELOG.md) and [Validation Scope](VALIDATION.md) for results and limits.
 
 ## Features
 
@@ -81,6 +91,8 @@ Fill known values and their units; leave the value of the quantity you want to s
 
 Dimension checks catch incompatible additions and conversions, but do not prove a physical formula is correct. This is not a general symbolic equation solver. Arbitrary nonlinear equations, simultaneous equations, uncertainty propagation, vectors, operators, and calculus are not supported. Temperature units currently accept kelvin `K`, not offset conversions from Celsius or Fahrenheit.
 
+Near a repeated root, a limited decimal-rational check can distinguish supported literal-coefficient cases without silently changing the number of real solutions. This does not make the calculation arbitrary-precision. Extreme underflow, input rounding, or coefficient cancellation may prevent reliable solving; such cases are rejected rather than asserted to have an exact root or no solution. See [Validation Scope](VALIDATION.md).
+
 ## Physics Formula Library
 
 In Physics mode, choose **Formulas**, or press `Command + Shift + F`. The library works offline and contains 100 selected university-level formulas:
@@ -102,7 +114,7 @@ Formula notes are independently written and checked against [OpenStax University
 
 ## Install and Open
 
-1. Download [Calculator-1.1.0-macOS-arm64.zip](https://github.com/B0yangWong/Calculator-Releases/releases/download/v1.1.0/Calculator-1.1.0-macOS-arm64.zip) from the [v1.1.0 release](https://github.com/B0yangWong/Calculator-Releases/releases/tag/v1.1.0), or find a newer build in [Latest Release](https://github.com/B0yangWong/Calculator-Releases/releases/latest).
+1. Download [Calculator-1.1.3-macOS-arm64.zip](https://github.com/B0yangWong/Calculator-Releases/releases/download/v1.1.3/Calculator-1.1.3-macOS-arm64.zip) from the [v1.1.3 release](https://github.com/B0yangWong/Calculator-Releases/releases/tag/v1.1.3), or find a newer build in [Latest Release](https://github.com/B0yangWong/Calculator-Releases/releases/latest). The previous public [v1.1.0 release](https://github.com/B0yangWong/Calculator-Releases/releases/tag/v1.1.0) remains available.
 2. Extract the archive and move `Calculator.app` into Applications. Quit an older copy normally before replacing it. No Xcode, account, or additional runtime is required.
 3. Open the app. If macOS blocks it, only proceed if you trust the download and are confident it has not been altered. After the first attempt, use System Settings → Privacy & Security → Open Anyway and confirm, following [Apple's instructions](https://support.apple.com/en-us/102445). This option may not be available on a managed Mac. If macOS says the app is damaged or will harm your computer, stop and report it. Do not disable system security checks.
 4. Open Settings with `Command + ,` to choose 中文 or English, a theme, and text size. Check the angle mode before calculating.
@@ -134,12 +146,12 @@ The app saves history and unfinished input locally. Normal operation uses a sing
 
 History, drafts, settings, mode choice, physics variable values and units, and formula-library associations stay locally in `~/Library/Application Support/FormulaDesk/state.json`; the retained directory name does not affect the app's display name. These records are not encrypted by the app. Copy, paste, and export are user-triggered. Formula-source links are optional external browsing; calculation and library search do not require a network connection. macOS backups and diagnostic services are separate. See [Privacy](PRIVACY.md) for details, including deletion.
 
-- General calculations use floating-point arithmetic and display 15 significant digits. This is not an arbitrary-precision calculator. Purely numeric rational expressions have an exact-fraction path; fraction / decimal result switching is limited to those expressions.
+- General calculations use floating-point arithmetic and normally display 15 significant digits; closely spaced physics roots may use up to 17 digits to distinguish them. Displayed digits are not an accuracy guarantee. This is not an arbitrary-precision calculator. Purely numeric rational expressions have an exact-fraction path; fraction / decimal result switching is limited to those expressions.
 - History: up to 250 rows. Lists: up to 1024 items. Factorials: up to 170. Matrices: up to 32 × 32.
 - List ranges, list indexing, multi-parameter custom functions, and recursive functions are not implemented.
 - Graphing, derivatives, and integration are not available yet. Full behavioral parity with Desmos is not promised.
 - Physics mode handles supported real-scalar, single-unknown equations, not arbitrary or simultaneous equations. A dimension check is not a proof of physical validity. Formula-library reference entries are not automatically solved; shared variables and physical constraints must be checked by the user.
-- Tests cannot cover every expression or every supported Mac. Older supported macOS versions and a clean-Mac first launch still need hands-on validation. Independently check important calculations, including units, angle mode, and precision.
+- Tests cannot cover every expression or every supported Mac. Older supported macOS versions, a separate clean-Mac first install, and the full human first-click activation path still need hands-on validation. [Validation Scope](VALIDATION.md) distinguishes automated checks, trusted pointer delivery, and remaining gaps. Independently check important calculations, including units, angle mode, and precision.
 
 Updates are manual: download a newer version, quit normally, and replace the app without deleting its Application Support folder. See [Changelog](CHANGELOG.md) for version changes.
 
